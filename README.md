@@ -10,3 +10,5 @@ earthling new my-app
 cd my-app
 earthling serve
 ```
+
+For an example project, see https://github.com/thomasboyt/outside
