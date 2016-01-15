@@ -1,0 +1,6 @@
+/* this is used for the cli codebase, not for the webpack bundle! */
+
+{
+  presets: ['es2015'],
+  plugins: ['syntax-async-functions', 'transform-object-rest-spread', 'transform-regenerator']
+}
