@@ -11,6 +11,8 @@ module.exports = {
   resolveLoader: baseConfig.resolveLoader,
 
   plugins: [
+    baseConfig.plugins[0],  // PROJECT definition
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"test"'

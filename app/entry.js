@@ -1,6 +1,6 @@
-require(__PROJECT__ + '/entry');
-
 import 'babel-polyfill';
+
+require(__PROJECT__ + '/entry');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

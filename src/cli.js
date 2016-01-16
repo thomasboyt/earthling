@@ -7,6 +7,7 @@ import {intOpt} from './util/optTypes';
 import generate from './commands/new';
 import build from './commands/build';
 import serve from './commands/serve';
+import test from './commands/test';
 
 const pkg = require('../package.json');
 
@@ -29,6 +30,11 @@ app.command('serve')
   .description('Build and serve files')
   .option('-p, --port <port>', 'port to serve on (defaults to 3000)', intOpt('port'), 3000)
   .action(serve);
+
+app.command('test')
+  .description('Run tests through Karma')
+  .option('--single-run', 'run tests only once')
+  .action(test);
 
 app.parse(process.argv);
 
