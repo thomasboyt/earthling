@@ -5,7 +5,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 
 import generateWebpackConfig from '../generateWebpackConfig';
 
-export default async function serve(options) {
+export default function serve(options) {
   const config = generateWebpackConfig('development');
   const compiler = webpack(config);
 
