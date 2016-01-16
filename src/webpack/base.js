@@ -24,7 +24,7 @@ module.exports = {
   },
 
   output: {
-    path: './build/',
+    path: path.join(projectRoot, './build/'),
     filename: '[name].bundle.js'
   },
 
@@ -96,6 +96,8 @@ module.exports = {
   },
 
   devServer: {
-    historyApiFallback: true,
+    contentBase: projectRoot,
+
+    noInfo: true,
   },
 };
