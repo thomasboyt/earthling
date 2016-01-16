@@ -1,3 +1,5 @@
+require(__PROJECT__ + '/entry');
+
 import 'babel-polyfill';
 
 import React from 'react';
