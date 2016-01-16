@@ -101,6 +101,6 @@ The behind-the-curtain magic Earthling provides is easy to extract if you're rea
 
 ## Design Questions
 
-Shipping this as a global module is a bad idea considering dependencies/etc might change and multiple installations would be wanted for different projects.
+Shipping this as a global module is a bad idea considering dependencies/etc might change and multiple installations would be wanted for different projects. Can this be globally *and* locally installed? e.g. Global installation only covers `earthling init`, and then you switch to the local installation? Can the global CLI tool be configured to look for and prefer a local installation? What does that even look like?
 
-Can this be globally *and* locally installed? e.g. Global installation only covers `earthling init`, and then you switch to the local installation? Can the global CLI tool be configured to look for and prefer a local installation? What does that even look like?
+It's tempting to add something like `earthling lint`, not requiring any user eslint configuration, but with the way linting is integrated with most editors this would mean extra user configuration. Leave it to the eslint CLI instead.
