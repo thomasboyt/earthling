@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import Express from 'express';
 import historyFallback from 'connect-history-api-fallback';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import generateWebpackConfig from '../generateWebpackConfig';
 
@@ -20,6 +21,7 @@ function startServer(compiler, config, options) {
   const serverOptions = config.devServer;
 
   app.use(webpackDevMiddleware(compiler, serverOptions));
+  app.use(webpackHotMiddleware(compiler));
   app.use(historyFallback());
 
   // TODO: this should be configurable

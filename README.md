@@ -6,7 +6,7 @@ For an example project, see https://github.com/thomasboyt/outside
 
 ## Todos
 
-* [ ] Hot module reload
+* [x] Hot module reload
   * Webpack: https://github.com/glenjamin/webpack-hot-middleware
   * Implementation: https://github.com/gaearon/react-transform-boilerplate
 * [ ] Version under the generated project
