@@ -2,7 +2,7 @@ import 'babel-polyfill';
 
 import app from 'commander';
 
-import {intOpt} from './util/optTypes';
+import {intOpt, listOpt} from './util/optTypes';
 
 import init from './commands/init';
 import build from './commands/build';
@@ -36,6 +36,7 @@ app.command('serve')
 app.command('test')
   .description('Run tests through Karma')
   .option('--single-run', 'run tests only once')
+  .option('--browsers <browsers>', 'browsers to run in (default: Chrome)', listOpt)
   .action(test);
 
 app.parse(process.argv);

@@ -14,7 +14,8 @@ export default function test(options) {
   // * add extendable karma.config.js in project
   // * allow passing any Karma CLI options? depends on how malleable Karma CLI parsing is
   const karmaConfig = {
-    browsers: ['Chrome'],
+    browsers: options.browsers || ['Chrome'],
+
     frameworks: ['mocha'],
     reporters: ['mocha'],
 

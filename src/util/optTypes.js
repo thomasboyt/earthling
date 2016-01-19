@@ -10,3 +10,7 @@ export function intOpt(name) {
     return parsed;
   };
 }
+
+export function listOpt(val) {
+  return val.split(',').map((s) => s.trim());
+}
