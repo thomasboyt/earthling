@@ -114,7 +114,7 @@ export default function getBase(environment, opts={}) {
     historyApiFallback: true,
   };
 
-  let devtool = 'source-map';
+  let devtool = 'cheap-module-source-map';
 
   // Production builds
   if (environment === 'production') {
