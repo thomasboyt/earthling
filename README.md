@@ -9,7 +9,8 @@ For an example project, see https://github.com/thomasboyt/outside
 * [ ] Add way to import/use non-custom reducers (e.g. redux-form)
   * maybe `reducers/index.js` could export a hash of other reducers? might be confusing
 * [ ] Clean up & document template project
-  * [ ] Default webpack config
+  * [ ] Clean up/improve default custom webpack config
+  * [x] Fill out readme
 * [x] global cli should defer to local cli
   * ember-cli
 * [x] Version under the generated project
