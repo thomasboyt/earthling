@@ -4,6 +4,18 @@ This was split from the codebase from another React site generator I worked on c
 
 For an example project, see https://github.com/thomasboyt/outside
 
+## Todos
+
+* [ ] Hot module reload
+  * Webpack: https://github.com/glenjamin/webpack-hot-middleware
+  * Implementation: https://github.com/gaearon/react-transform-boilerplate
+* [ ] Version under the generated project
+  * [ ] Global `earthling` should somehow always "defer" to the local one. Is there prior art of this?
+  * [ ] https://github.com/ember-cli/ember-cli/blob/master/blueprints/app/files/package.json#L24
+* [ ] Template generated project
+  * [ ] `package.json` name
+  * [ ] `<title>` name
+
 ## Hypothetical Manual
 
 ### Installation
