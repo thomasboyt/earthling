@@ -1,21 +1,17 @@
 import merge from 'webpack-merge';
 import requireFromProject from './util/requireFromProject';
 
-import development from './webpack/development';
-import production from './webpack/production';
+import getBase from './webpack/base';
 import test from './webpack/test';
 
-const envConfigs = {
-  development, production, test
-};
-
-export default function generateWebpackConfig(environment) {
+export default function generateWebpackConfig(environment, opts) {
   const customConfig = requireFromProject('./webpack.config.js').default(environment);
 
-  const config = envConfigs[environment];
-
-  if (!config) {
-    throw new Error(`Invalid environment for webpack config: ${environment}`);
+  let config;
+  if (environment === 'test') {
+    config = test;
+  } else {
+    config = getBase(environment, opts);
   }
 
   return merge(config, customConfig);

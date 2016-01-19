@@ -29,6 +29,8 @@ app.command('build')
 app.command('serve')
   .description('Build and serve files')
   .option('-p, --port <port>', 'port to serve on (defaults to 3000)', intOpt('port'), 3000)
+  .option('-h, --hot', 'enable hot module reloading')
+  .option('--prod', 'serve production build')
   .action(serve);
 
 app.command('test')
