@@ -12,7 +12,7 @@
   "repository": "",
   "license": "MIT",
   "dependencies": {
-    "earthling": "git://github.com/thomasboyt/earthling",
+    "earthling": "<%= earthlingVersion %>",
     "immutable": "^3.7.6",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",

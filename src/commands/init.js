@@ -60,7 +60,11 @@ export default async function(outPath, options) {
     default: 'new-earthling-project',
   });
 
-  const templateData = {name, slug};
+  const templateData = {
+    name,
+    slug,
+    earthlingVersion: require('../../package').version
+  };
 
   // Read template files
   const files = await recursiveP(templateDir);
