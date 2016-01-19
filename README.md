@@ -1,7 +1,7 @@
 # Earthling 
 
-[![npm](https://img.shields.io/npm/v/earthling.svg)](https://www.npmjs.com/package/earthling)
 [![Build Status](https://travis-ci.org/thomasboyt/earthling.svg?branch=master)](https://travis-ci.org/thomasboyt/earthling)
+[![npm](https://img.shields.io/npm/v/earthling.svg)](https://www.npmjs.com/package/earthling)
 
 Earthling is an opinionated wrapper around React, Redux, React-Router, Babel, and Webpack. Think of it as a build tool and (tiny) framework.
 
@@ -44,23 +44,7 @@ cd my-app/
 earthling serve
 ```
 
-### Developing Your Application
-
-#### Configuration
-
-* `config/DevTools.js`
-* `config/history.js`
-* `config/middleware.js`
-* `config/routes.js`
-* `entry.js`
-
-#### Customizing Webpack
-
-#### Reducer Magic
-
-#### Using NODE_ENV
-
-### Commands
+### Command Reference
 
 #### `earthling init <app>`
 
@@ -98,6 +82,63 @@ Build your application to `build/`. Defaults to a production (optimized) build.
 Options:
 
 * `--dev`: Create a development build
+
+### Developing Your Application
+
+#### Configuration
+
+##### `entry.js`
+
+This file serves two purposes:
+
+1. It's imported first thing in Earthling's entry point script, and thus should contain anything that needs to run immediately, like CSS imports (see below).
+2. It exports a function, `init(store)` that is called after your Redux store is created but before your React component tree is rendered. You can use it to initialize anything that depends on your Redux store.
+
+##### `config/DevTools.js`
+
+You can customize the component tree that Redux DevTools's [`createDevTools()` wraps](https://github.com/gaearon/redux-devtools#create-a-devtools-component) here. For example, you could change the monitor being used, or add a [filter monitor](https://github.com/zalmoxisus/redux-devtools-filter-actions) to ignore certain actions.
+
+##### `config/history.js`
+
+You can customize the [history](https://github.com/rackt/react-router/blob/master/docs/guides/basics/Histories.md) that React-Router uses here. By default, the app uses the `browserHistory` history, but not all backends will support this.
+
+##### `config/middleware.js`
+
+This file contains the Redux middleware your reducers use, exported as an array. By default, it includes the useful `redux-thunk` middleware, but feel free to swap it out as you see fit.
+
+##### `config/routes.js`
+
+This file contains your react-router route tree.
+
+#### Reducer Magic
+
+To remove a small bit of annoying boilerplate, Earthling is configured to automatically import all top-level JavaScript files in your `reducers/` folder and pass them to your store. The reducer will be available in your state tree under its filename (so the state from `reducers/foo.js` is available at `state.foo`).
+
+#### Writing Tests
+
+Similarly, tests are also automatically imported. Any file in `app/` ending with `.spec.js` will be included by the test entry point.
+
+Earthling is configured to use the popular [Mocha](https://mochajs.org/) testing framework. You can bring any assertion library you like; the default template includes an example test using @mjackson's excellent [expect](https://github.com/mjackson/expect) library.
+
+#### Customizing Webpack
+
+#### Using NODE_ENV
+
+#### Public API
+
+Earthling contains a public API that can be used within your app.
+
+##### `createStore`
+
+You can access the final `createStore()` method used by Earthling to create your Redux store:
+
+```js
+import {createStore} from 'earthling';
+
+const store = createStore();
+```
+
+This is useful for tests that require a full store instance.
 
 ### Common Tasks
 
