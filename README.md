@@ -6,15 +6,16 @@ For an example project, see https://github.com/thomasboyt/outside
 
 ## Todos
 
-* [x] Hot module reload
-  * Webpack: https://github.com/glenjamin/webpack-hot-middleware
-  * Implementation: https://github.com/gaearon/react-transform-boilerplate
+* [ ] Document reducer magic
+* [ ] Add way to import/use non-custom reducers (e.g. redux-form)
+  * maybe `reducers/index.js` could export a hash of other reducers? might be confusing
 * [ ] Version under the generated project
   * [ ] Global `earthling` should somehow always "defer" to the local one. Is there prior art of this?
   * [ ] https://github.com/ember-cli/ember-cli/blob/master/blueprints/app/files/package.json#L24
 * [ ] Template generated project
   * [ ] `package.json` name
   * [ ] `<title>` name
+* [x] Hot module reload
 
 ## Hypothetical Manual
 
