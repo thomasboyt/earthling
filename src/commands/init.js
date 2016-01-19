@@ -10,7 +10,7 @@ import {copySync} from 'fs-extra';
 import exists from '../util/exists';
 import promiseWrap from '../util/promiseWrap';
 
-const templateDir = path.join(__dirname, '../.././template');
+const templateDir = path.join(__dirname, '../../template');
 
 const recursiveP = promiseWrap(recursive);
 
@@ -40,11 +40,8 @@ export default async function(outPath, options) {
 
     let basename = path.basename(relPath);
 
-    // TODO: would be nice to have a real convention for this
-    if (basename === 'gitignore') {
-      basename = '.gitignore';
-    } else if (basename === 'eslintrc') {
-      basename = '.eslintrc';
+    if (basename.startsWith('_')) {
+      basename = basename.replace('_', '.');
     }
 
     const dirOutPath = path.join(path.resolve(process.cwd(), outPath), dirname);
@@ -57,19 +54,19 @@ export default async function(outPath, options) {
 
   const fullPath = path.resolve(outPath);
 
-  copySync(path.join(fullPath, '_private.example.yml'), path.join(fullPath, '_private.yml'));
-
   console.log(`Created new Earthling project in ${fullPath}.`);
 
   let shouldNPMInstall = options.npmInstall;
 
-  if (process.stdin.isTTY) {
-    shouldNPMInstall = await showPrompt([{
+  if (process.stdin.isTTY && !shouldNPMInstall) {
+    const resp = await showPrompt([{
       type: 'confirm',
       name: 'shouldNPMInstall',
       message: 'Run npm install?',
       default: true
-    }]).shouldNPMInstall;
+    }]);
+
+    shouldNPMInstall = resp.shouldNPMInstall;
   }
 
   if (shouldNPMInstall) {

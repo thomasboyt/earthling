@@ -4,7 +4,7 @@ import app from 'commander';
 
 import {intOpt} from './util/optTypes';
 
-import generate from './commands/new';
+import init from './commands/init';
 import build from './commands/build';
 import serve from './commands/serve';
 import test from './commands/test';
@@ -14,11 +14,11 @@ const pkg = require('../package.json');
 app
   .version(pkg.version);
 
-app.command('new <path>')
+app.command('init <path>')
   .description('Create new site using the default template at [path]')
   .option('-f, --force', 'Overwrite existing files at [path]')
   .option('--npm-install', 'Run NPM install')
-  .action(generate);
+  .action(init);
 
 app.command('build')
   .description('Build files to build/')
