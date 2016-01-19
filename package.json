@@ -7,11 +7,11 @@
     "url": "git+https://github.com/thomasboyt/earthling.git"
   },
   "scripts": {
-    "test": "mocha --no-color --compilers js:babel-register integration/**/*.test.js"
+    "test": "mocha --no-color --compilers js:babel-register integration/**/*.test.js",
+    "lint": "eslint app/ bin/ src/"
   },
   "bin": {
-    "earthling": "bin/earthling",
-    "lint": "eslint app/ bin/ src/"
+    "earthling": "bin/earthling"
   },
   "author": "Thomas Boyt <me@thomasboyt.com>",
   "license": "MIT",
