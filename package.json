@@ -1,7 +1,7 @@
 {
   "name": "earthling",
   "version": "0.0.1",
-  "main": "bin/earthling",
+  "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thomasboyt/earthling.git"
