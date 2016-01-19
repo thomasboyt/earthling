@@ -1,3 +1,4 @@
+import {template as compileTemplate} from 'lodash';
 import path from 'path';
 import {readFileSync, writeFileSync} from 'fs';
 import {sync as mkdirpSync} from 'mkdirp';
@@ -5,7 +6,6 @@ import {execSync} from 'child_process';
 
 import recursive from 'recursive-readdir';
 import inquirer from 'inquirer';
-import {copySync} from 'fs-extra';
 
 import exists from '../util/exists';
 import promiseWrap from '../util/promiseWrap';
@@ -14,10 +14,30 @@ const templateDir = path.join(__dirname, '../../template');
 
 const recursiveP = promiseWrap(recursive);
 
-function showPrompt(...args) {
+function showPrompt(question) {
   return new Promise((resolve) => {
-    inquirer.prompt(...args, (answers) => resolve(answers));
+    question.name = '_';
+
+    if (!process.stdin.isTTY) {
+      // we're in a test or some other non-interactive environment, so just return a default
+      resolve(question.default || '');
+      return;
+    }
+
+    inquirer.prompt([question], (answers) => resolve(answers._));
   });
+}
+
+// thx ember-cli https://github.com/ember-cli/ember-cli/blob/master/lib/models/file-info.js
+function processTemplate(content, context) {
+  // default options include some weird extra shit that conflicts w/ template strings D:
+  const options = {
+    evaluate:    /<%([\s\S]+?)%>/g,
+    interpolate: /<%=([\s\S]+?)%>/g,
+    escape:      /<%-([\s\S]+?)%>/g
+  };
+
+  return compileTemplate(content, options)(context);
 }
 
 export default async function(outPath, options) {
@@ -28,12 +48,25 @@ export default async function(outPath, options) {
       return;
     }
   }
+  const name = await showPrompt({
+    type: 'input',
+    message: 'Project name?',
+    default: 'New Earthling Project',
+  });
+
+  const slug = await showPrompt({
+    type: 'input',
+    message: 'Project slug/NPM package name?',
+    default: 'new-earthling-project',
+  });
+
+  const templateData = {name, slug};
 
   // Read template files
   const files = await recursiveP(templateDir);
 
   files.forEach((file) => {
-    const content = readFileSync(file, {encoding: 'utf-8'});
+    const content = processTemplate(readFileSync(file, {encoding: 'utf-8'}), templateData);
 
     const relPath = path.relative(templateDir, file);
     const dirname = path.dirname(relPath);
@@ -56,18 +89,11 @@ export default async function(outPath, options) {
 
   console.log(`Created new Earthling project in ${fullPath}.`);
 
-  let shouldNPMInstall = options.npmInstall;
-
-  if (process.stdin.isTTY && !shouldNPMInstall) {
-    const resp = await showPrompt([{
-      type: 'confirm',
-      name: 'shouldNPMInstall',
-      message: 'Run npm install?',
-      default: true
-    }]);
-
-    shouldNPMInstall = resp.shouldNPMInstall;
-  }
+  const shouldNPMInstall = await showPrompt({
+    type: 'confirm',
+    message: 'Run npm install?',
+    default: true
+  });
 
   if (shouldNPMInstall) {
     execSync('npm install', {

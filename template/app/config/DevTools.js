@@ -1,3 +1,7 @@
+/*
+ * Export your custom Redux dev tools component here.
+ */
+
 import React from 'react';
 
 import LogMonitor from 'redux-devtools-log-monitor';

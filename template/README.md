@@ -1,1 +1,3 @@
-An example [Earthling](https://github.com/thomasboyt/earthling) project.
+# <%- name %>
+
+An [Earthling](https://github.com/thomasboyt/earthling) project.

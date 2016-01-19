@@ -17,7 +17,6 @@ app
 app.command('init <path>')
   .description('Create new site using the default template at [path]')
   .option('-f, --force', 'Overwrite existing files at [path]')
-  .option('--npm-install', 'Run NPM install')
   .action(init);
 
 app.command('build')

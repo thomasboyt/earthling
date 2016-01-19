@@ -1,3 +1,7 @@
+/*
+ * Export your react-router routes here.
+ */
+
 import React from 'react';
 import {Route} from 'react-router';
 
