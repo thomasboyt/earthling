@@ -39,8 +39,9 @@ module.exports = {
 
       // TODO: make this include earthling's node_modules/*
       patterns: [
+        path.join(earthlingRoot, 'node_modules/**/*.js'),
         './node_modules/**/*.js',
-        './vendor/**/*.js'
+        './app/vendor/**/*.js'
       ]
     }),
   ],
