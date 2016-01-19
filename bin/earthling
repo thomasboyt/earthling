@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var resolve = require('resolve').sync;
+
 require('babel-register')({
   // only compile:
   //   earthling/ except earthling/node_modules/
@@ -10,4 +12,16 @@ require('babel-register')({
   ]
 });
 
-require('../src/cli');
+// Always attempt to load earthling from a project's local install first before falling back to
+// a globally-installed version
+try {
+  var localCLI = resolve('earthling/src/cli', {
+    basedir: process.cwd()
+  });
+
+  require(localCLI);
+
+} catch(err) {
+  // global fallback
+  require('../src/cli');
+}

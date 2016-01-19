@@ -10,6 +10,8 @@ For an example project, see https://github.com/thomasboyt/outside
   * maybe `reducers/index.js` could export a hash of other reducers? might be confusing
 * [ ] Clean up & document template project
   * [ ] Default webpack config
+* [x] global cli should defer to local cli
+  * ember-cli
 * [x] Version under the generated project
 * [x] Pass Karma options through `earthling test`
   * Give example under CI section of manual
