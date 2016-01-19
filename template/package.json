@@ -1,14 +1,16 @@
 {
   "name": "<%= slug %>",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "earthling test --single-run",
+    "start": "earthling serve",
+    "build": "earthling build"
   },
   "author": "",
-  "license": "ISC",
+  "repository": "",
+  "license": "MIT",
   "dependencies": {
     "earthling": "git://github.com/thomasboyt/earthling",
     "immutable": "^3.7.6",
