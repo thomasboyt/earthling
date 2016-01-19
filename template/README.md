@@ -1,7 +1,5 @@
 # <%- name %>
 
-An [Earthling](https://github.com/thomasboyt/earthling) project.
-
 This app is built with [Earthling](https://github.com/thomasboyt/earthling).
 
 ## Running
