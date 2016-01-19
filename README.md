@@ -87,26 +87,26 @@ Options:
 
 #### Configuration
 
-##### `entry.js`
+##### `app/entry.js`
 
 This file serves two purposes:
 
 1. It's imported first thing in Earthling's entry point script, and thus should contain anything that needs to run immediately, like CSS imports (see below).
 2. It exports a function, `init(store)` that is called after your Redux store is created but before your React component tree is rendered. You can use it to initialize anything that depends on your Redux store.
 
-##### `config/DevTools.js`
+##### `app/config/DevTools.js`
 
 You can customize the component tree that Redux DevTools's [`createDevTools()` wraps](https://github.com/gaearon/redux-devtools#create-a-devtools-component) here. For example, you could change the monitor being used, or add a [filter monitor](https://github.com/zalmoxisus/redux-devtools-filter-actions) to ignore certain actions.
 
-##### `config/history.js`
+##### `app/config/history.js`
 
 You can customize the [history](https://github.com/rackt/react-router/blob/master/docs/guides/basics/Histories.md) that React-Router uses here. By default, the app uses the `browserHistory` history, but not all backends will support this.
 
-##### `config/middleware.js`
+##### `app/config/middleware.js`
 
 This file contains the Redux middleware your reducers use, exported as an array. By default, it includes the useful `redux-thunk` middleware, but feel free to swap it out as you see fit.
 
-##### `config/routes.js`
+##### `app/config/routes.js`
 
 This file contains your react-router route tree.
 
