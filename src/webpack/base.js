@@ -25,6 +25,7 @@ module.exports = {
 
   output: {
     path: path.resolve(projectRoot, './build'),
+    publicPath: '/',
     filename: '[name].bundle.js'
   },
 
@@ -94,7 +95,5 @@ module.exports = {
   devServer: {
     hot: true,
     historyApiFallback: true,
-    noInfo: false,
-    quiet: false,
   },
 };
