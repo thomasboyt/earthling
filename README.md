@@ -19,6 +19,10 @@ One problem Earthling isn't currently targeting is universal (isomorphic) render
 
 Not yet! Wait for it to hit 0.1.0, at which point I'll start actually supporting it and publishing changelogs and such.
 
+## Where can I see it in action?
+
+The template/ folder contains a stripped-down example, while the [earthling branch of Bipp](https://github.com/thomasboyt/bipp/tree/earthling) shows it in a larger application. Thrill at the lack of webpack boilerplate! Be amazed at the complete absence of a Karma configuration! Etc.
+
 ## Manual
 
 ### Installation
