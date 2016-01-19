@@ -27,10 +27,10 @@ Install the tool:
 npm install -g earthling
 ```
 
-Create a init example app:
+Create an example app:
 
 ```
-earthling new my-app
+earthling init my-app
 ```
 
 And run it:
