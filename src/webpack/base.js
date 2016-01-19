@@ -24,7 +24,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(projectRoot, './build/'),
+    path: path.resolve(projectRoot, './build'),
     filename: '[name].bundle.js'
   },
 
@@ -70,21 +70,17 @@ module.exports = {
       },
 
       {
-        test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
-      },
-      {
         test: /(?:\.woff$|\.woff2$|\.ttf$|\.svg$|\.eot$)/,
         loader: 'file-loader',
         query: {
-          name: '/font/[hash].[ext]'
+          name: './font/[hash].[ext]'
         }
       },
       {
         test: /(?:\.png$|\.jpeg$|\.jpg$|\.gif$)/,
         loader: 'file-loader',
         query: {
-          name: '/assets/[hash].[ext]'
+          name: './assets/[hash].[ext]'
         }
       },
       {
@@ -96,8 +92,9 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: projectRoot,
-
-    noInfo: true,
+    hot: true,
+    historyApiFallback: true,
+    noInfo: false,
+    quiet: false,
   },
 };

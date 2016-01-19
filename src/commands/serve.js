@@ -1,8 +1,5 @@
 import webpack from 'webpack';
-import Express from 'express';
-import historyFallback from 'connect-history-api-fallback';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import WebpackDevServer from 'webpack-dev-server';
 
 import generateWebpackConfig from '../generateWebpackConfig';
 
@@ -16,22 +13,14 @@ export default function serve(options) {
 function startServer(compiler, config, options) {
   const port = options.port;
 
-  const app = new Express();
-
   const serverOptions = config.devServer;
 
-  app.use(webpackDevMiddleware(compiler, serverOptions));
-  app.use(webpackHotMiddleware(compiler));
-  app.use(historyFallback());
+  // TODO: don't do this when doing production preview builds
+  config.entry.app.push(`webpack-dev-server/client?http://localhost:${port}`);
 
-  // TODO: this should be configurable
-  const index = process.cwd() + '/index.html';
+  const server = new WebpackDevServer(compiler, serverOptions);
 
-  app.get('/index.html', (req, res) => {
-    res.sendFile(index);
-  });
-
-  app.listen(port, (err) => {
+  server.listen(port, 'localhost', (err) => {
     if (err) {
       console.error(err);
     } else {

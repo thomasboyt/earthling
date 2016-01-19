@@ -9,7 +9,7 @@ module.exports = webpackMerge(config, {
   entry: {
     app: [
       config.entry.app,
-      'webpack-hot-middleware/client'
+      'webpack/hot/dev-server'
     ]
   },
 
