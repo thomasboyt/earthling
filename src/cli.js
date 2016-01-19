@@ -48,4 +48,5 @@ if (!process.argv.slice(2).length) {
 
 process.on('unhandledRejection', (err) => {
   console.error(err.stack);
+  process.exit(1);
 });
