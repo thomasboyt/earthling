@@ -30,17 +30,20 @@ describe('earthling template', function() {
 
     mkdirpSync(projectPath);
 
-    const initProc = spawnSync(earthlingPath, ['init', projectPath, '--force', '--npm-install'], {
+    const initProc = spawnSync(earthlingPath, ['init', projectPath, '--force'], {
       stdio: ['ignore', process.stdout, process.stderr],
       encoding: 'utf-8'
     });
     expect(initProc.status).toEqual(0);
 
-    const buildProc = spawnSync(earthlingPath, ['build'], {
+    // We use Firefox here so we can run this test on Travis w/ no extra configuration
+    const testProc = spawnSync(earthlingPath, ['test', '--single-run', '--browsers', 'Firefox'], {
       cwd: projectPath,
       stdio: 'inherit',
       encoding: 'utf-8'
     });
-    expect(buildProc.status).toEqual(0);
+    expect(testProc.status).toEqual(0);
+
+    rimrafSync(projectPath);
   });
 });

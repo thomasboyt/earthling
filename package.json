@@ -10,7 +10,8 @@
     "test": "mocha --no-color --compilers js:babel-register integration/**/*.test.js"
   },
   "bin": {
-    "earthling": "bin/earthling"
+    "earthling": "bin/earthling",
+    "lint": "eslint app/ bin/ src/"
   },
   "author": "Thomas Boyt <me@thomasboyt.com>",
   "license": "MIT",
