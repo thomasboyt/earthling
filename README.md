@@ -6,19 +6,16 @@ For an example project, see https://github.com/thomasboyt/outside
 
 ## Todos
 
-* [ ] Document reducer magic
 * [ ] Add way to import/use non-custom reducers (e.g. redux-form)
   * maybe `reducers/index.js` could export a hash of other reducers? might be confusing
-* [ ] Version under the generated project
-  * [ ] Global `earthling` should somehow always "defer" to the local one. Is there prior art of this?
-  * [ ] https://github.com/ember-cli/ember-cli/blob/master/blueprints/app/files/package.json#L24
-* [ ] Template generated project
-  * [ ] `package.json` name
-  * [ ] `<title>` name
 * [ ] Clean up & document template project
   * [ ] Default webpack config
-* [ ] Pass Karma options through `earthling test`
+* [x] Version under the generated project
+* [x] Pass Karma options through `earthling test`
   * Give example under CI section of manual
+* [x] Template generated project
+  * [x] `package.json` name
+  * [x] `<title>` name
 * [x] Vendorize earthling's `node_modules`
 * [x] Hot module reload
 
