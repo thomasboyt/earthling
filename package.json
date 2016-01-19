@@ -1,13 +1,13 @@
 {
   "name": "earthling",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "bin/earthling",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thomasboyt/earthling.git"
   },
   "scripts": {
-    "test": "mocha --no-color --compilers js:babel/register integration/**/*.test.js"
+    "test": "mocha --no-color --compilers js:babel-register integration/**/*.test.js"
   },
   "bin": {
     "earthling": "bin/earthling"
@@ -52,12 +52,13 @@
     "recursive-readdir": "^1.3.0",
     "redux": "^3.0.5",
     "redux-devtools": "^3.0.1",
-    "redux-thunk": "^1.0.3",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.7.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "expect": "^1.13.4"
+  },
   "bugs": {
     "url": "https://github.com/thomasboyt/earthling/issues"
   },

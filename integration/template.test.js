@@ -11,14 +11,15 @@ import exists from '../src/util/exists';
 /*
  * Really dumb integration test.
  *
- * 1. `earthling new temp-folder`
+ * 1. `earthling init temp-folder`
  * 2. `earthling build`
  * 3. exit code 0 = pass
  */
 
 const earthlingPath = path.join(__dirname, '../bin/earthling');
 
-const projectPath = `${path.join(process.cwd(), 'temp/')}`;
+const projectPath = path.join(process.cwd(), '_integration_temp/');
+
 describe('earthling template', function() {
   this.timeout(0);
 
@@ -29,11 +30,11 @@ describe('earthling template', function() {
 
     mkdirpSync(projectPath);
 
-    const newProc = spawnSync(earthlingPath, ['new', projectPath, '--force', '--npm-install'], {
+    const initProc = spawnSync(earthlingPath, ['init', projectPath, '--force', '--npm-install'], {
       stdio: ['ignore', process.stdout, process.stderr],
       encoding: 'utf-8'
     });
-    expect(newProc.status).toEqual(0);
+    expect(initProc.status).toEqual(0);
 
     const buildProc = spawnSync(earthlingPath, ['build'], {
       cwd: projectPath,
