@@ -15,6 +15,11 @@ For an example project, see https://github.com/thomasboyt/outside
 * [ ] Template generated project
   * [ ] `package.json` name
   * [ ] `<title>` name
+* [ ] Clean up & document template project
+  * [ ] Default webpack config
+* [ ] Pass Karma options through `earthling test`
+  * Give example under CI section of manual
+* [x] Vendorize earthling's `node_modules`
 * [x] Hot module reload
 
 ## Hypothetical Manual
@@ -42,11 +47,31 @@ cd my-app/
 earthling serve
 ```
 
+### Developing Your Application
+
+#### Configuration
+
+* `config/DevTools.js`
+* `config/history.js`
+* `config/middleware.js`
+* `config/routes.js`
+* `entry.js`
+
+#### Customizing Webpack
+
+#### Reducer Magic
+
+#### Using NODE_ENV
+
 ### Commands
 
 #### `earthling init <app>`
 
 Generates a new app in a folder named `app`.
+
+Options:
+
+* `--force`: Init an app in the specificed path even if it already exists
 
 #### `earthling serve`
 
@@ -54,7 +79,9 @@ Serves your app for development using webpack-dev-server.
 
 Options:
 
-* `--port`: Change the port to bind to
+* `--port`: Change the port to bind to (default `3000`)
+* `--hot`: Enable hot module reloading & [react-transform-hmr](https://github.com/gaearon/react-transform-hmr). This will likely slow build times
+* `--prod`: Preview your app in the production environment
 
 See below for information on proxying requests to a backend server.
 
@@ -72,11 +99,13 @@ Build your application to `build/`. Defaults to an optimized/minified build.
 
 Options:
 
-* `--dev`: Create a development build (unoptimized).
+* `--dev`: Create a development environment build
 
 ### Common Tasks
 
 #### I want to proxy requests to a backend server during development
+
+*how to use webpack-dev-server config*
 
 #### I want to use Immutable JS
 
