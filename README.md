@@ -1,6 +1,6 @@
 # Earthling 
 
-[![npm](https://img.shields.io/npm/v/earthling.svg)]()
+[![npm](https://img.shields.io/npm/v/earthling.svg)](https://www.npmjs.com/package/earthling)
 [![Build Status](https://travis-ci.org/thomasboyt/earthling.svg?branch=master)](https://travis-ci.org/thomasboyt/earthling)
 
 Earthling is an opinionated wrapper around React, Redux, React-Router, Babel, and Webpack. Think of it as a build tool and (tiny) framework.
