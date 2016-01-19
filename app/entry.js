@@ -11,7 +11,7 @@ const store = createStore();
 
 // Set up router
 const routes = require(__PROJECT__ + '/config/routes').default;
-import { browserHistory } from 'react-router';
+const history = require(__PROJECT__ + '/config/history').default;
 
 if (init) {
   init(store);
@@ -20,5 +20,5 @@ if (init) {
 import Root from './containers/Root';
 
 ReactDOM.render((
-  <Root store={store} routes={routes} history={browserHistory} />
+  <Root store={store} routes={routes} history={history} />
 ), document.getElementById('container'));
