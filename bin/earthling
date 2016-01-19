@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
-require('babel-register');
+require('babel-register')({
+  // only compile:
+  //   earthling/ except earthling/node_modules/
+  //   process.cwd() except node_modules/
+  only: [
+    /earthling\/(?!node_modules)/,
+    new RegExp(`${process.cwd()}\\/(?!node_modules)`)
+  ]
+});
 
 require('../src/cli');
