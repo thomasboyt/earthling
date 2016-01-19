@@ -44,6 +44,7 @@
     "lodash": "^4.0.0",
     "log-update": "^1.0.2",
     "minimatch": "^3.0.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^2.3.4",
     "path-is-inside": "^1.0.1",
     "react": "^0.14.6",
