@@ -10,7 +10,7 @@ function runWebpack(environment) {
 }
 
 export default async function build(options={}) {
-  const environment = options.optimize ? 'production' : 'development';
+  const environment = options.dev ? 'development' : 'production';
 
   const stats = await runWebpack(environment);
 

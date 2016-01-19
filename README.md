@@ -85,14 +85,15 @@ Runs your tests using Karma. Continually rebuilds & re-runs tests when files cha
 Options:
 
 * `--single-run`: Run tests once
+* `--browsers`: Specify browsers to run tests in, e.g. `--browsers Chrome,Firefox` (requires the appropriate Karma launchers)
 
 #### `earthling build`
 
-Build your application to `build/`. Defaults to an optimized/minified build.
+Build your application to `build/`. Defaults to a production (optimized) build.
 
 Options:
 
-* `--dev`: Create a development environment build
+* `--dev`: Create a development build
 
 ### Common Tasks
 

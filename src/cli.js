@@ -21,15 +21,14 @@ app.command('init <path>')
 
 app.command('build')
   .description('Build files to build/')
-  .option('-o, --optimize', 'minify Webpack bundle')
-  .option('--log-webpack', 'log Webpack stats to webpack.log.json')
+  .option('--dev', 'build development build (instead of default production build)')
   .action(build);
 
 app.command('serve')
   .description('Build and serve files')
   .option('-p, --port <port>', 'port to serve on (defaults to 3000)', intOpt('port'), 3000)
   .option('-h, --hot', 'enable hot module reloading')
-  .option('--prod', 'serve production build')
+  .option('--prod', 'serve production build (instead of default development build)')
   .action(serve);
 
 app.command('test')
