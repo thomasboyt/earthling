@@ -33,4 +33,8 @@ export default async function build(options={}) {
       console.log('');
     });
   }
+
+  if (jsonStats.errors.length > 0) {
+    process.exit(1);
+  }
 }
