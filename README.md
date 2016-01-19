@@ -15,6 +15,10 @@ Earthling also tries to abstract some of the most common problems in setting up 
 
 One problem Earthling isn't currently targeting is universal (isomorphic) rendering. This is a really complex topic with a lot of churn that mostly requires bespoke solutions, unfortunately. Long-term, Earthling may be able to provide pieces of functionality that are used in universal apps, but probably won't ever be able to provide a full framework for them.
 
+## Should I use this?
+
+Not yet! Wait for it to hit 0.1.0, at which point I'll start actually supporting it and publishing changelogs and such.
+
 ## Manual
 
 ### Installation
