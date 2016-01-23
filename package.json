@@ -1,6 +1,6 @@
 {
   "name": "earthling",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "app/index.js",
   "repository": {
     "type": "git",
