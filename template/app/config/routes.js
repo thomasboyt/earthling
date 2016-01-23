@@ -8,7 +8,7 @@ import {Route} from 'react-router';
 import App from '../views/App';
 
 export default (
-  <Route handler={App}>
+  <Route component={App}>
 
     <Route
       path="/"
